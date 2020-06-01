@@ -6,7 +6,7 @@ Movie search made with React using The Open Movie Database (OMDb API)
 ### Technologies
 - [React](https://github.com/facebook/create-react-app)
 - [React Router](https://github.com/ReactTraining/react-router)
-- [Element](https://elemefe.github.io/element-react/#/en-US/quick-start)
+- [Styled Components](https://styled-components.com)
 
 ### Requirements
 You need create an .env.local file in the root of the project and put your api key created in [OMDb API](http://www.omdbapi.com)
