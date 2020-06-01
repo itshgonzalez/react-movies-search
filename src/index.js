@@ -5,17 +5,14 @@ import * as serviceWorker from "./serviceWorker";
 
 import { BrowserRouter } from "react-router-dom";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faStar as fasFaStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
-library.add(fab, fasFaStar, farFaStar);
+import { GlobalStyle } from "./utils/GlobalStyle";
 
 ReactDOM.render(
   <BrowserRouter>
     <App />
+    <GlobalStyle />
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById("app")
 );
 
 serviceWorker.unregister();
