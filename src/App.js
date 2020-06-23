@@ -9,22 +9,24 @@ import { MoviesContextProvider } from "./context/MoviesContext";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faStar as fasFaStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faStar as fasFaStar,
+} from "@fortawesome/free-solid-svg-icons";
 import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
-library.add(fab, farFaStar, fasFaStar);
+
+library.add(fab, faSearch, farFaStar, fasFaStar);
 
 function App() {
   return (
     <div className="App">
-      <div className="container">
-        <MoviesContextProvider>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/detail/:movieId" component={Detail} />
-            <Route component={NotFound} />
-          </Switch>
-        </MoviesContextProvider>
-      </div>
+      <MoviesContextProvider>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/detail/:movieId" component={Detail} />
+          <Route component={NotFound} />
+        </Switch>
+      </MoviesContextProvider>
     </div>
   );
 }
