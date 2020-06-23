@@ -1,29 +1,24 @@
 import React from "react";
-import PropTypes from "prop-types";
-
-// Router
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Movie = ({ id, title, poster }) => (
-  <div className="MovieList-item-wrapper">
-    <div className="MovieList-item-in">
-      <div className="MovieList-item-into">
-        <Link className="card" to={`/detail/${id}`}>
-          <div className="card-image">
-            <img className="image" alt={title} src={poster} />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">{title}</h2>
-          </div>
-        </Link>
-      </div>
-    </div>
-  </div>
-);
+const MovieWrapper = styled(Link)`
+  background: transparent;
+`;
 
-Movie.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
-  year: PropTypes.string,
-  poster: PropTypes.string,
-};
+const MovieImg = styled.img`
+  width: 16rem;
+  height: 23rem;
+  border-radius: 0.9rem;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.3);
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const Movie = ({ imdbID, Poster }) => (
+  <MovieWrapper to={`/detail/${imdbID}`}>
+    <MovieImg src={Poster} />
+  </MovieWrapper>
+);

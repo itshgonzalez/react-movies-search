@@ -1,23 +1,26 @@
 import React from "react";
-import PropTypes from "prop-types";
+import styled from "styled-components";
 
-// Import components
-import { Movie } from "./Movie";
+import { Movie } from "../components/Movie";
+
+const MoviesWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 4rem 2rem;
+
+  @media (max-width: 92.5rem) {
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 20rem));
+  }
+`;
 
 export const MoviesList = ({ movies }) => (
-  <div className="MoviesList">
+  <MoviesWrapper>
     {movies.map((movie) => (
-      <Movie
-        id={movie.imdbID}
-        key={movie.imdbID}
-        title={movie.Title}
-        year={movie.Year}
-        poster={movie.Poster}
-      />
+      <Movie key={movie.imdbID} {...movie} />
     ))}
-  </div>
+  </MoviesWrapper>
 );
-
-MoviesList.propTypes = {
-  movies: PropTypes.array,
-};
