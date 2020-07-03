@@ -19,7 +19,7 @@ library.add(fab, faSearch, farFaStar, fasFaStar);
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
       <MoviesContextProvider>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -27,7 +27,7 @@ function App() {
           <Route component={NotFound} />
         </Switch>
       </MoviesContextProvider>
-    </div>
+    </React.Fragment>
   );
 }
 
