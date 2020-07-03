@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
+
 import styled from "styled-components";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { getMovies } from "../services/getMovies";
-import MoviesContext from "../context/MoviesContext";
+import { getMovies } from "services/getMovies";
+import MoviesContext from "context/MoviesContext";
 
 const SearchFormWrapper = styled.div`
   display: flex;

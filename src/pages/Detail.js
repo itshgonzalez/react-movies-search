@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { MoviesList } from "../components/MoviesList";
+import { MoviesList } from "components/MoviesList";
 
-import MoviesContext from "../context/MoviesContext";
-import { getMovie } from "../services/getMovie";
+import MoviesContext from "context/MoviesContext";
+import { getMovie } from "services/getMovie";
 
-import ButtonBackToHome from "../components/ButtonBackToHome";
+import ButtonBackToHome from "components/ButtonBackToHome";
 
 import Stars from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

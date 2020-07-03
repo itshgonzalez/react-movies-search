@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Movie } from "../components/Movie";
+import { Movie } from "components/Movie";
 
 const MoviesWrapper = styled.div`
   display: grid;

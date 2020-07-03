@@ -1,6 +1,6 @@
 import React from "react";
 
-import ButtonBackToHome from "../components/ButtonBackToHome";
+import ButtonBackToHome from "components/ButtonBackToHome";
 
 function NotFound() {
   return (

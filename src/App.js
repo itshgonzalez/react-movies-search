@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Detail from "./pages/Detail";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import Detail from "pages/Detail";
+import Home from "pages/Home";
+import NotFound from "pages/NotFound";
 
-import { MoviesContextProvider } from "./context/MoviesContext";
+import { MoviesContextProvider } from "context/MoviesContext";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";

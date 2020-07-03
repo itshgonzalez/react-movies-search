@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 
 import styled from "styled-components";
 
-import SearchForm from "../components/SearchForm";
-import { MoviesList } from "../components/MoviesList";
+import MoviesContext from "context/MoviesContext";
 
-import MoviesContext from "../context/MoviesContext";
+import SearchForm from "components/SearchForm";
+import { MoviesList } from "components/MoviesList";
+
 
 const MoviesListWrapper = styled.div`
   padding: 4rem 0;
