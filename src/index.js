@@ -3,15 +3,13 @@ import ReactDOM from "react-dom";
 import App from "App";
 import * as serviceWorker from "serviceWorker";
 
-import { BrowserRouter } from "react-router-dom";
-
 import { GlobalStyle } from "utils/GlobalStyle";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <React.Fragment>
     <App />
     <GlobalStyle />
-  </BrowserRouter>,
+  </React.Fragment>,
   document.getElementById("app")
 );
 
