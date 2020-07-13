@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Detail from "pages/Detail";
 import Home from "pages/Home";
@@ -21,11 +21,13 @@ function App() {
   return (
     <React.Fragment>
       <MoviesContextProvider>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/detail/:movieId" component={Detail} />
-          <Route component={NotFound} />
-        </Switch>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/detail/:movieId" component={Detail} />
+            <Route component={NotFound} />
+          </Switch>
+        </BrowserRouter>
       </MoviesContextProvider>
     </React.Fragment>
   );
