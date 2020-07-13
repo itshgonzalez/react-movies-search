@@ -1,7 +1,6 @@
 {
   "name": "react-movies-search",
   "version": "1.0.0",
-  "private": true,
   "keywords": [
     "react",
     "movies",
@@ -22,6 +21,7 @@
     "react-rating": "^2.0.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-scroll": "^1.8.0",
     "styled-components": "^5.1.0"
   },
   "scripts": {
