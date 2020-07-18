@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+/* eslint-disable react/prop-types */
+import React, { useContext } from "react";
 
 import styled from "styled-components";
 
@@ -6,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { getMovies } from "services/getMovies";
 import MoviesContext from "context/MoviesContext";
+
+import useForm from "hooks/useForm";
 
 const SearchFormWrapper = styled.div`
   display: flex;
@@ -35,21 +38,21 @@ const SearchIcon = styled(FontAwesomeIcon)`
   padding-left: 0.3rem;
 `;
 
-function SearchForm() {
-  const [inputKeywords, setInputKeywords] = useState("");
+function SearchForm({ initialKeywords = "" }) {
+  const [keywords, changeKeywords] = useForm({ initialKeywords });
   const { setMovies, setSearched } = useContext(MoviesContext);
-
-  function handleChange(event) {
-    setInputKeywords(event.target.value);
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
-    getMovies(inputKeywords.trim()).then((movies) => {
+    getMovies(keywords.trim()).then((movies) => {
       const { Search = [] } = movies;
       setMovies(Search);
       setSearched(true);
     });
+  }
+
+  function handleChange(event) {
+    changeKeywords({ keywords: event.target.value });
   }
 
   return (

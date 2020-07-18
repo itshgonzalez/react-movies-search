@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { animateScroll as scroll } from "react-scroll";
-import PropTypes from "prop-types";
-
+/* eslint-disable react/prop-types */
+import React, { useContext } from "react";
 import styled from "styled-components";
-
-import MoviesContext from "context/MoviesContext";
-import { getMovie } from "services/getMovie";
 
 import { MoviesList } from "components/MoviesList";
 import ButtonBackToHome from "components/ButtonBackToHome";
+
+import MoviesContext from "context/MoviesContext";
+
+import useMovie from "hooks/useMovie";
 
 import Stars from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,6 +28,7 @@ const MovieDetailsContent = styled.div`
 
 const MovieInfo = styled.div`
   display: flex;
+  padding: 1rem 0;
 
   @media (max-width: 60.75rem) {
     flex-direction: column;
@@ -153,22 +152,12 @@ const OtherMoviesTitleSection = styled.h1`
 `;
 
 const MovieDetailsContentMoviesContent = styled.div`
-  padding: 2rem 0;
+  padding: 1rem 0;
 `;
 
-function Detail() {
+function Detail({ match }) {
   const { movies } = useContext(MoviesContext);
-  const [movie, setMovie] = useState("");
-  const { movieId } = useParams();
-
-  useEffect(() => {
-    getMovie(movieId).then((movie) => {
-      setMovie(movie);
-    });
-    scroll.scrollToTop({
-      smooth: true,
-    });
-  }, [movieId]);
+  const { movie } = useMovie(match.params);
 
   const {
     Actors,
@@ -186,8 +175,8 @@ function Detail() {
 
   return (
     <MovieDetailsWrapper>
-      <ButtonBackToHome />
       <MovieDetailsContent>
+        <ButtonBackToHome />
         <MovieInfo>
           <MoviePoster>
             <MovieImg src={Poster} />
@@ -221,7 +210,7 @@ function Detail() {
                 <span role="img" aria-label="movieinfo">
                   🍿
                 </span>
-                <MovieTitleSection>Movie Info</MovieTitleSection>
+                <MovieTitleSection>Info</MovieTitleSection>
               </MovieInfoTitle>
               <MovieInfoContentWrapper>
                 <MovieInfoContentLeft>
@@ -280,11 +269,3 @@ function Detail() {
 }
 
 export default Detail;
-Detail.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.object,
-    isExact: PropTypes.bool,
-    path: PropTypes.string,
-    url: PropTypes.string,
-  }),
-};
