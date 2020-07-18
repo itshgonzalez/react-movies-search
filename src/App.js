@@ -11,24 +11,25 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import {
   faSearch,
+  faArrowLeft,
   faStar as fasFaStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
 
-library.add(fab, faSearch, farFaStar, fasFaStar);
+library.add(fab, faSearch, faArrowLeft, farFaStar, fasFaStar);
 
 function App() {
   return (
     <React.Fragment>
-      <MoviesContextProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <MoviesContextProvider>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/detail/:movieId" component={Detail} />
+            <Route component={Home} path="/" exact />
+            <Route component={Detail} path="/detail/:movieId" />
             <Route component={NotFound} />
           </Switch>
-        </BrowserRouter>
-      </MoviesContextProvider>
+        </MoviesContextProvider>
+      </BrowserRouter>
     </React.Fragment>
   );
 }
