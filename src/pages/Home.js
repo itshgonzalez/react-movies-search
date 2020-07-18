@@ -12,17 +12,14 @@ const MoviesListWrapper = styled.div`
 `;
 
 function Home() {
-  const { movies, searched } = useContext(MoviesContext);
-
-  const renderResults = () =>
-    searched && movies.length === 0 
-    ? (<p>No results found</p>) 
-    : (<MoviesList movies={movies} />);
+  const { movies } = useContext(MoviesContext);
 
   return (
     <React.Fragment>
       <SearchForm />
-      <MoviesListWrapper>{renderResults()}</MoviesListWrapper>
+      <MoviesListWrapper>
+        <MoviesList movies={movies} />
+      </MoviesListWrapper>
     </React.Fragment>
   );
 }
