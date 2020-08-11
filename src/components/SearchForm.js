@@ -1,12 +1,12 @@
-/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { getMovies } from "services/getMovies";
 import MoviesContext from "context/MoviesContext";
+
+import { getMovies } from "services/getMovies";
 
 import useForm from "hooks/useForm";
 
@@ -38,8 +38,8 @@ const SearchIcon = styled(FontAwesomeIcon)`
   padding-left: 0.3rem;
 `;
 
-function SearchForm({ initialKeywords = "" }) {
-  const [keywords, changeKeywords] = useForm({ initialKeywords });
+function SearchForm() {
+  const [keywords, changeKeywords] = useForm("");
   const { setMovies, setSearched } = useContext(MoviesContext);
 
   function handleSubmit(event) {

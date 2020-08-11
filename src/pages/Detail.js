@@ -1,16 +1,13 @@
-/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { MoviesList } from "components/MoviesList";
 import ButtonBackToHome from "components/ButtonBackToHome";
+import { Rating } from "components/Rating";
 
 import MoviesContext from "context/MoviesContext";
 
 import useMovie from "hooks/useMovie";
-
-import Stars from "react-rating";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MovieDetailsWrapper = styled.div`
   display: flex;
@@ -181,24 +178,7 @@ function Detail({ match }) {
           <MoviePoster>
             <MovieImg src={Poster} />
             <MovieRating>
-              <Stars
-                emptySymbol={
-                  <FontAwesomeIcon
-                    icon={["far", "star"]}
-                    size="sm"
-                    color="#ffc700"
-                  />
-                }
-                fullSymbol={
-                  <FontAwesomeIcon
-                    icon={["fas", "star"]}
-                    size="sm"
-                    color="#ffc700"
-                  />
-                }
-                initialRating={imdbRating / 2}
-                readonly
-              />
+              <Rating imdbRating={imdbRating} />
               <MovieVotes>{imdbRating} / 10</MovieVotes>
             </MovieRating>
           </MoviePoster>
@@ -259,7 +239,7 @@ function Detail({ match }) {
           <MovieDetailsOtherMovies>
             <OtherMoviesTitleSection>Other Movies</OtherMoviesTitleSection>
             <MovieDetailsContentMoviesContent>
-              <MoviesList movies={movies} />
+              <MoviesList movies={movies} movieSelected={movie} />
             </MovieDetailsContentMoviesContent>
           </MovieDetailsOtherMovies>
         )}
