@@ -239,7 +239,7 @@ function Detail({ match }) {
           <MovieDetailsOtherMovies>
             <OtherMoviesTitleSection>Other Movies</OtherMoviesTitleSection>
             <MovieDetailsContentMoviesContent>
-              <MoviesList movies={movies} movieSelected={movie} />
+              <MoviesList movies={movies} />
             </MovieDetailsContentMoviesContent>
           </MovieDetailsOtherMovies>
         )}
