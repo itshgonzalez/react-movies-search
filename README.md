@@ -1,10 +1,11 @@
 # Movie Search
-Movie search made with React using The Open Movie Database (OMDb API)
+A movies search using [The Open Movie Database (OMDb API)](http://www.omdbapi.com/)
 
 # Getting Started
 
 ### Technologies
 - [React](https://github.com/facebook/create-react-app)
+- [Create React App](https://es.reactjs.org/docs/create-a-new-react-app.html)
 - [React Router](https://github.com/ReactTraining/react-router)
 - [Styled Components](https://styled-components.com)
 
