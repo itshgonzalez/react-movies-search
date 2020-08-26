@@ -59,7 +59,6 @@ const MovieDetails = styled.div`
   max-width: 40rem;
   padding: 1rem;
   align-items: center;
-  text-align: justify;
 `;
 
 const MovieTitle = styled.h1`
