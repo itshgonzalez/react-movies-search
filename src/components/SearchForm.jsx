@@ -37,20 +37,16 @@ const SearchIcon = styled(FontAwesomeIcon)`
 `;
 
 function SearchForm() {
-  const [keywords, changeKeywords] = useForm("");
+  const { inputMovie, handleChange } = useForm();
   const { setMovies, setSearched } = useContext(MoviesContext);
 
   function handleSubmit(event) {
     event.preventDefault();
-    getMovies(keywords.trim()).then((movies) => {
+    getMovies(inputMovie.trim()).then((movies) => {
       const { Search = [] } = movies;
       setMovies(Search);
       setSearched(true);
     });
-  }
-
-  function handleChange(event) {
-    changeKeywords({ keywords: event.target.value });
   }
 
   return (

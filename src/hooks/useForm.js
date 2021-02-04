@@ -1,12 +1,16 @@
 import { useState } from "react";
 
-function useForm({ inputKeywords = "" }) {
-  const [keywords, setKeywords] = useState(inputKeywords);
+function useForm(initState) {
+  const [form, setForm] = useState(initState);
 
-  function changeKeywords({ keywords }) {
-    setKeywords(keywords);
+  function handleChange({ target }) {
+    const { name, value } = target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
   }
-  return [keywords, changeKeywords];
+  return { form, handleChange, ...form };
 }
 
 export default useForm;
