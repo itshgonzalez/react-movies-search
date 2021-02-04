@@ -162,7 +162,9 @@ function Detail({ match }) {
     Title,
   } = movie;
 
-  const recommendedMovies = movies.filter(({ imdbID }) => imdbID !== currentMovie);
+  const recommendedMovies = movies.filter(
+    ({ imdbID }) => imdbID !== currentMovie
+  );
 
   return (
     <MovieDetailsWrapper>
