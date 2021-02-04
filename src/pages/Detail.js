@@ -26,6 +26,7 @@ const MovieDetailsContent = styled.div`
 const MovieInfo = styled.div`
   display: flex;
   padding: 1rem 0;
+  max-width: 120rem;
 
   @media (max-width: 60.75rem) {
     flex-direction: column;
@@ -40,6 +41,7 @@ const MoviePoster = styled.div`
 `;
 
 const MovieImg = styled.img`
+  width: 23rem;
   border-radius: 0.9rem;
   box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.3);
 `;
@@ -57,7 +59,7 @@ const MovieVotes = styled.span`
 const MovieDetails = styled.div`
   flex: 1 1 60%;
   max-width: 40rem;
-  padding: 1rem;
+  padding: 0 2rem;
   align-items: center;
 `;
 
@@ -75,14 +77,16 @@ const MovieInfoWrapper = styled.div`
   padding-bottom: 1rem;
 `;
 
-const MovieInfoTitle = styled.div`
+const SectionTitle = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 1rem;
+  font-size: 2rem;
 `;
 
 const MovieTitleSection = styled.h2`
   padding-left: 0.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
 `;
 
@@ -111,19 +115,7 @@ const MovieCastWrapper = styled.div`
   padding-bottom: 1rem;
 `;
 
-const MovieInfoCast = styled.div`
-  display: flex;
-  align-items: center;
-  padding-bottom: 1rem;
-`;
-
 const MovieRatingsWrapper = styled.div`
-  padding-bottom: 1rem;
-`;
-
-const MovieInfoRatings = styled.div`
-  display: flex;
-  align-items: center;
   padding-bottom: 1rem;
 `;
 
@@ -138,12 +130,12 @@ const MovieRatingsContentRight = styled.div`
   padding-left: 1rem;
 `;
 
-const MovieDetailsOtherMovies = styled.div`
+const MovieDetailsRecommended = styled.div`
   flex: 1 1 100%;
   width: 100%;
 `;
 
-const OtherMoviesTitleSection = styled.h1`
+const RecommendedTitleSection = styled.h1`
   font-weight: 700;
 `;
 
@@ -159,6 +151,7 @@ function Detail({ match }) {
     Actors,
     Director,
     Genre,
+    imdbID: currentMovie,
     imdbRating,
     Plot,
     Poster,
@@ -168,6 +161,8 @@ function Detail({ match }) {
     Runtime,
     Title,
   } = movie;
+
+  const recommendedMovies = movies.filter(({ imdbID }) => imdbID !== currentMovie);
 
   return (
     <MovieDetailsWrapper>
@@ -185,12 +180,12 @@ function Detail({ match }) {
             <MovieTitle>{Title}</MovieTitle>
             <MoviePlot>{Plot}</MoviePlot>
             <MovieInfoWrapper>
-              <MovieInfoTitle>
+              <SectionTitle>
                 <span role="img" aria-label="movieinfo">
                   🍿
                 </span>
                 <MovieTitleSection>Info</MovieTitleSection>
-              </MovieInfoTitle>
+              </SectionTitle>
               <MovieInfoContentWrapper>
                 <MovieInfoContentLeft>
                   <ContentInfo>Genre:</ContentInfo>
@@ -209,21 +204,21 @@ function Detail({ match }) {
               </MovieInfoContentWrapper>
             </MovieInfoWrapper>
             <MovieCastWrapper>
-              <MovieInfoCast>
+              <SectionTitle>
                 <span role="img" aria-label="cast">
                   🎬
                 </span>
                 <MovieTitleSection>Cast</MovieTitleSection>
-              </MovieInfoCast>
+              </SectionTitle>
               <ContentInfo>{Actors}</ContentInfo>
             </MovieCastWrapper>
             <MovieRatingsWrapper>
-              <MovieInfoRatings>
+              <SectionTitle>
                 <span role="img" aria-label="ratings">
                   ⭐️
                 </span>
                 <MovieTitleSection>Ratings</MovieTitleSection>
-              </MovieInfoRatings>
+              </SectionTitle>
               {movie &&
                 Ratings.map(({ Source, Value }) => (
                   <MovieInfoContentWrapper key={Source}>
@@ -234,13 +229,13 @@ function Detail({ match }) {
             </MovieRatingsWrapper>
           </MovieDetails>
         </MovieInfo>
-        {movies.length > 0 && (
-          <MovieDetailsOtherMovies>
-            <OtherMoviesTitleSection>Other Movies</OtherMoviesTitleSection>
+        {recommendedMovies.length > 0 && (
+          <MovieDetailsRecommended>
+            <RecommendedTitleSection>Recommended</RecommendedTitleSection>
             <MovieDetailsContentMoviesContent>
-              <MoviesList movies={movies} />
+              <MoviesList movies={recommendedMovies} />
             </MovieDetailsContentMoviesContent>
-          </MovieDetailsOtherMovies>
+          </MovieDetailsRecommended>
         )}
       </MovieDetailsContent>
     </MovieDetailsWrapper>

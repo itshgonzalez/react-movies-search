@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,19 +25,19 @@ const Content = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.2s ease-in-out;
 
   &:hover {
-    transition: all 0.2s ease-in-out;
     transform: scale(1.2);
   }
 `;
 
 const TextIcon = styled.span`
-  display: none;
   padding-left: 0.5rem;
+  display: none;
 
   ${Content}:hover & {
-    display: flex;
+    display: inherit;
   }
 `;
 
