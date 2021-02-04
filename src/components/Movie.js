@@ -19,7 +19,7 @@ const MovieImg = styled.img`
 `;
 
 export const Movie = ({ imdbID, Poster }) => (
-  <MovieWrapper to={`/detail/${imdbID}`}>
+  <MovieWrapper to={`/movie/${imdbID}`}>
     <MovieImg src={Poster} />
   </MovieWrapper>
 );

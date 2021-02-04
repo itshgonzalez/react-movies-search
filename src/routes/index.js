@@ -10,7 +10,7 @@ export const Routes = [
   },
   {
     component: Detail,
-    path: "/detail/:movieId",
+    path: "/movie/:movieId",
   },
   {
     component: NotFound,
