@@ -23,8 +23,7 @@ const SearchFrom = styled.form`
 `;
 
 const FormInput = styled.input`
-  margin-left: 0.6rem;
-  width: 12rem;
+  margin: 0 0.9rem 0 0.6rem;
   height: 2rem;
   background-color: transparent;
   border: 0;

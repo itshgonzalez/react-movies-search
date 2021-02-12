@@ -44,6 +44,10 @@ const MovieImg = styled.img`
   width: 23rem;
   border-radius: 0.9rem;
   box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 60.75rem) {
+    width: 19rem;
+  }
 `;
 
 const MovieRating = styled.div`
@@ -61,6 +65,10 @@ const MovieDetails = styled.div`
   max-width: 40rem;
   padding: 0 2rem;
   align-items: center;
+
+  @media (max-width: 60.75rem) {
+    padding: 0;
+  }
 `;
 
 const MovieTitle = styled.h1`
@@ -71,6 +79,10 @@ const MovieTitle = styled.h1`
 
 const MoviePlot = styled.p`
   padding-bottom: 1rem;
+
+  @media (max-width: 60.75rem) {
+    text-align: justify;
+  }
 `;
 
 const MovieInfoWrapper = styled.div`

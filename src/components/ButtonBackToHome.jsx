@@ -11,6 +11,9 @@ const LinkTo = styled(Link)`
 
 const WrapperIcon = styled.div`
   padding: 0.5rem 1rem;
+  @media (max-width: 60.75rem) {
+    padding: 0.5rem 0;
+  }
 `;
 
 const WrapperContent = styled.div`
