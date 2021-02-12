@@ -17,17 +17,19 @@ library.add(fab, faSearch, faArrowLeft, farFaStar, fasFaStar);
 
 function App() {
   return (
-    <React.Fragment>
-      <BrowserRouter>
-        <MoviesContextProvider>
-          <Switch>
-            {Routes.map((route, index) => (
-              <Route key={index} {...route} />
-            ))}
-          </Switch>
-        </MoviesContextProvider>
-      </BrowserRouter>
-    </React.Fragment>
+    <React.StrictMode>
+      <React.Fragment>
+        <BrowserRouter>
+          <MoviesContextProvider>
+            <Switch>
+              {Routes.map((route, index) => (
+                <Route key={index} {...route} />
+              ))}
+            </Switch>
+          </MoviesContextProvider>
+        </BrowserRouter>
+      </React.Fragment>
+    </React.StrictMode>
   );
 }
 
