@@ -226,24 +226,25 @@ function Detail({ match }) {
               </SectionTitle>
               <ContentInfo>{Actors}</ContentInfo>
             </MovieCastWrapper>
-            <MovieRatingsWrapper>
-              <SectionTitle>
-                <span role="img" aria-label="ratings">
-                  ⭐️
-                </span>
-                <MovieTitleSection>Ratings</MovieTitleSection>
-              </SectionTitle>
-              {movie &&
-                Ratings.map(({ Source, Value }) => (
+            {movie && Ratings && Ratings.length > 0 && (
+              <MovieRatingsWrapper>
+                <SectionTitle>
+                  <span role="img" aria-label="ratings">
+                    ⭐️
+                  </span>
+                  <MovieTitleSection>Ratings</MovieTitleSection>
+                </SectionTitle>
+                {Ratings.map(({ Source, Value }) => (
                   <MovieInfoContentWrapper key={Source}>
                     <MovieRatingsContentLeft>{Source}:</MovieRatingsContentLeft>
                     <MovieRatingsContentRight>{Value}</MovieRatingsContentRight>
                   </MovieInfoContentWrapper>
                 ))}
-            </MovieRatingsWrapper>
+              </MovieRatingsWrapper>
+            )}
           </MovieDetails>
         </MovieInfo>
-        {recommendedMovies.length > 0 && (
+        {recommendedMovies && recommendedMovies.length > 0 && (
           <MovieDetailsRecommended>
             <RecommendedTitleSection>Recommended</RecommendedTitleSection>
             <MovieDetailsContentMoviesContent>

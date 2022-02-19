@@ -29,19 +29,6 @@ const Content = styled.span`
   align-items: center;
   justify-content: center;
   transition: 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.2);
-  }
-`;
-
-const TextIcon = styled.span`
-  padding-left: 0.5rem;
-  display: none;
-
-  ${Content}:hover & {
-    display: inherit;
-  }
 `;
 
 const ButtonBackToHome = () => (
@@ -50,7 +37,6 @@ const ButtonBackToHome = () => (
       <LinkTo to={"/"}>
         <Content>
           <Icon icon={["fas", "arrow-left"]} size="2x" color="#000" />
-          <TextIcon>Back to Home</TextIcon>
         </Content>
       </LinkTo>
     </WrapperContent>

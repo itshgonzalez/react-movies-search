@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import PropTypes from "prop-types";
+
 import styled from "styled-components";
 
 const MovieWrapper = styled(Link)`
@@ -23,3 +25,8 @@ export const Movie = ({ imdbID, Poster }) => (
     <MovieImg src={Poster} />
   </MovieWrapper>
 );
+
+Movie.propTypes = {
+  imdbID: PropTypes.string.isRequired,
+  Poster: PropTypes.string,
+};

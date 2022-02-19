@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styled from "styled-components";
 import Stars from "react-rating";
@@ -17,3 +18,7 @@ export const Rating = ({ imdbRating }) => (
     readonly
   />
 );
+
+Rating.propTypes = {
+  imdbRating: PropTypes.string,
+};

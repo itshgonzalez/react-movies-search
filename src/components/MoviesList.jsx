@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import styled from "styled-components";
 
 import { Movie } from "components/Movie";
@@ -24,3 +26,7 @@ export const MoviesList = ({ movies }) => (
     ))}
   </MoviesWrapper>
 );
+
+MoviesList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
