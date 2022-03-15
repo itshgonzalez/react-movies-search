@@ -266,4 +266,4 @@ function Detail({ params }) {
     );
 }
 
-export default Detail;
+export { Detail };

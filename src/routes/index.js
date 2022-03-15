@@ -1,18 +1,18 @@
-import Detail from 'pages/Detail';
-import Home from 'pages/Home';
-import NotFound from 'pages/NotFound';
+import { HOME_PATH, DETAIL_PATH, NOT_FOUND_PATH } from './routes';
+
+import { Home, Detail, NotFound } from '../pages';
 
 export const Routes = [
     {
+        path: HOME_PATH,
         component: Home,
-        path: '/',
-        exact: true,
     },
     {
+        path: DETAIL_PATH,
         component: Detail,
-        path: '/movie/:movieId',
     },
     {
+        path: NOT_FOUND_PATH,
         component: NotFound,
     },
 ];
