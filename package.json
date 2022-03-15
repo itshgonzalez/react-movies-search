@@ -1,53 +1,55 @@
 {
-  "name": "react-movies-search",
-  "version": "1.0.0",
-  "keywords": [
-    "react",
-    "movies",
-    "movies-search"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/itshgonzalez/react-movies-search.git"
-  },
-  "author": "Héctor González (@itshgonzalez)",
-  "license": "MIT",
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/free-brands-svg-icons": "^5.13.0",
-    "@fortawesome/free-regular-svg-icons": "^5.13.0",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/react-fontawesome": "^0.1.9",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-rating": "^2.0.5",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.3",
-    "react-scroll": "^1.8.0",
-    "styled-components": "^5.1.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+    "name": "react-movies-search",
+    "version": "1.0.0",
+    "keywords": [
+        "react",
+        "movies",
+        "movies-search"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "react-test-renderer": "^16.13.1"
-  }
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/itshgonzalez/react-movies-search.git"
+    },
+    "author": "Héctor González (@itshgonzalez)",
+    "license": "MIT",
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.28",
+        "@fortawesome/free-brands-svg-icons": "^5.13.0",
+        "@fortawesome/free-regular-svg-icons": "^5.13.0",
+        "@fortawesome/free-solid-svg-icons": "^5.13.0",
+        "@fortawesome/react-fontawesome": "^0.1.9",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-rating": "^2.0.5",
+        "react-scripts": "^3.4.3",
+        "react-scroll": "^1.8.0",
+        "styled-components": "^5.1.0",
+        "wouter": "^2.8.0-alpha.2"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "prettier": "^2.5.1",
+        "react-test-renderer": "^16.13.1"
+    }
 }
