@@ -15,6 +15,7 @@ const MovieImg = styled.img`
     border-radius: 0.9rem;
     transition: 0.2s ease-in-out;
     box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.3);
+    cursor: pointer;
     &:hover {
         transform: scale(1.1);
     }
