@@ -1,19 +1,22 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
+import { StarOutline } from 'iconoir-react';
+
 import Stars from 'react-rating';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const FontAwesome = styled(FontAwesomeIcon)`
-    color: #ffc700;
-`;
 
 export const Rating = ({ imdbRating }) => (
     <Stars
-        emptySymbol={<FontAwesome icon={['far', 'star']} size="sm" />}
-        fullSymbol={<FontAwesome icon={['fas', 'star']} size="sm" />}
+        emptySymbol={<StarOutline color={'#ffc700'} width={20} height={20} />}
+        fullSymbol={
+            <StarOutline
+                fill={'#ffc700'}
+                color={'#ffc700'}
+                width={20}
+                height={20}
+            />
+        }
         initialRating={imdbRating / 2}
         readonly
     />

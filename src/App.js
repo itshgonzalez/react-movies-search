@@ -5,16 +5,6 @@ import { MoviesContextProvider } from 'context/MoviesContext';
 
 import { Routes } from './routes';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import {
-    faSearch,
-    faArrowLeft,
-    faStar as fasFaStar,
-} from '@fortawesome/free-solid-svg-icons';
-import { faStar as farFaStar } from '@fortawesome/free-regular-svg-icons';
-library.add(fab, faSearch, faArrowLeft, farFaStar, fasFaStar);
-
 function App() {
     return (
         <React.StrictMode>

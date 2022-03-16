@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import ButtonBackToHome from 'components/ButtonBackToHome';
+import { ButtonBack } from 'components/ButtonBack';
 
 const Wrapper = styled.div`
     display: flex;
@@ -29,7 +29,7 @@ const SubTitle = styled.h2`
 function NotFound() {
     return (
         <Wrapper>
-            <ButtonBackToHome />
+            <ButtonBack />
             <NotFoundContent>
                 <span role="img" aria-label="sadface">
                     😔

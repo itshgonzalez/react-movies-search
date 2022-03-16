@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { Search } from 'iconoir-react';
 
 import MoviesContext from 'context/MoviesContext';
 
@@ -17,6 +18,8 @@ const SearchFormWrapper = styled.div`
 `;
 
 const SearchFrom = styled.form`
+    display: flex;
+    align-items: center;
     padding: 0.8rem;
     border-radius: 8rem;
     background-color: #efefef;
@@ -31,8 +34,9 @@ const FormInput = styled.input`
     box-shadow: none;
 `;
 
-const SearchIcon = styled(FontAwesomeIcon)`
+const SearchIcon = styled(Search)`
     padding-left: 0.3rem;
+    color: #b8b8b8;
 `;
 
 function SearchForm() {
@@ -51,7 +55,7 @@ function SearchForm() {
     return (
         <SearchFormWrapper>
             <SearchFrom onSubmit={handleSubmit}>
-                <SearchIcon icon={['fa', 'search']} size="sm" color="#b8b8b8" />
+                <SearchIcon width={22} height={22} />
                 <FormInput
                     className="input"
                     name="inputMovie"

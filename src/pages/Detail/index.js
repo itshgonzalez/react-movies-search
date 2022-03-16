@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
+import { ButtonBack } from 'components/ButtonBack';
 import { MoviesList } from 'components/MoviesList';
-import ButtonBackToHome from 'components/ButtonBackToHome';
 import { Rating } from 'components/Rating';
 
 import MoviesContext from 'context/MoviesContext';
@@ -51,6 +51,8 @@ const MovieImg = styled.img`
 `;
 
 const MovieRating = styled.div`
+    display: flex;
+    justify-content: center;
     padding: 1rem 0;
     text-align: center;
     padding-bottom: 1rem;
@@ -182,7 +184,7 @@ function Detail({ params }) {
     return (
         <MovieDetailsWrapper>
             <MovieDetailsContent>
-                <ButtonBackToHome />
+                <ButtonBack />
                 <MovieInfo>
                     <MoviePoster>
                         <MovieImg src={Poster} />
