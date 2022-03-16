@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
 import { ButtonBack } from 'components/ButtonBack';
@@ -267,5 +269,9 @@ function Detail({ params }) {
         </MovieDetailsWrapper>
     );
 }
+
+Detail.propTypes = {
+    params: PropTypes.object.isRequired,
+};
 
 export { Detail };

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
 import { ArrowLeft } from 'iconoir-react';
@@ -31,5 +33,9 @@ function ButtonBack({ title }) {
         </SectionHead>
     );
 }
+
+ButtonBack.propTypes = {
+    title: PropTypes.string,
+};
 
 export { ButtonBack };
