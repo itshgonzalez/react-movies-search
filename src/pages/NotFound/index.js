@@ -1,43 +1,43 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
-import { ButtonBack } from 'components/ButtonBack';
+import { ButtonBack } from '../../components/ButtonBack';
+import { NotFoundImage } from '../../components/NotFoundImage';
 
-const Wrapper = styled.div`
+const Main = styled.main`
+    box-sizing: border-box;
+`;
+
+const Section = styled.section`
+    display: block;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 76rem;
+`;
+
+const SectionBody = styled.div`
     display: flex;
     flex-direction: column;
-    width: 60%;
-    height: 100%;
-    margin: 2rem auto;
+    padding-top: 2rem;
+    justify-content: center;
+    align-items: center;
 `;
 
-const NotFoundContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-size: 2.5rem;
-    margin: 1rem auto;
-`;
-
-const Title = styled.h1`
-    font-weight: 700;
-`;
-const SubTitle = styled.h2`
-    font-weight: 700;
+const SectionTitle = styled.h2`
+    padding-bottom: 8rem;
 `;
 
 function NotFound() {
     return (
-        <Wrapper>
-            <ButtonBack />
-            <NotFoundContent>
-                <span role="img" aria-label="sadface">
-                    😔
-                </span>
-                <Title>404!</Title>
-                <SubTitle>Not found</SubTitle>
-            </NotFoundContent>
-        </Wrapper>
+        <Main>
+            <Section>
+                <ButtonBack />
+                <SectionBody>
+                    <SectionTitle>¡Oooops! Esta página no existe</SectionTitle>
+                    <NotFoundImage width={'25rem'} />
+                </SectionBody>
+            </Section>
+        </Main>
     );
 }
 
