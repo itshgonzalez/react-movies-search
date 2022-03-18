@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Search } from 'iconoir-react';
 
 import MoviesContext from 'context/MoviesContext';
+import { useStorage } from 'hooks/useStorage';
 
 import { getMovies } from 'services/getMovies';
 
@@ -42,12 +43,14 @@ const SearchIcon = styled(Search)`
 function SearchForm() {
     const { inputMovie, handleChange } = useForm();
     const { setMovies, setSearched } = useContext(MoviesContext);
+    const [, setMoviesStorage] = useStorage('s_movies', []);
 
     function handleSubmit(event) {
         event.preventDefault();
         getMovies(inputMovie.trim()).then((movies) => {
             const { Search = [] } = movies;
             setMovies(Search);
+            setMoviesStorage({ movies: Search });
             setSearched(true);
         });
     }

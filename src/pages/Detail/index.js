@@ -8,6 +8,7 @@ import { MoviesList } from 'components/MoviesList';
 import { Rating } from 'components/Rating';
 
 import MoviesContext from 'context/MoviesContext';
+import { useStorage } from 'hooks/useStorage';
 
 import useMovie from 'hooks/useMovie';
 
@@ -161,8 +162,12 @@ const MovieDetailsContentMoviesContent = styled.div`
 
 function Detail({ params }) {
     const { movieId } = params;
-    const { movies } = useContext(MoviesContext);
+    const moviesContext = useContext(MoviesContext);
+    const moviesStorage = useStorage('s_movies')[0];
     const { movie } = useMovie(movieId);
+
+    const { movies } =
+        moviesContext.movies.length < 1 ? moviesStorage : moviesContext;
 
     const {
         Actors,
