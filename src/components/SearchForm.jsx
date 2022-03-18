@@ -6,7 +6,9 @@ import { Search } from 'iconoir-react';
 import MoviesContext from 'context/MoviesContext';
 import { useStorage } from 'hooks/useStorage';
 
-import { getMovies } from 'services/getMovies';
+import { FILTERS_GET_MOVIES } from 'constants';
+
+import { getMovies } from 'services';
 
 import useForm from 'hooks/useForm';
 
@@ -47,7 +49,11 @@ function SearchForm() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        getMovies(inputMovie.trim()).then((movies) => {
+        getMovies(
+            inputMovie.trim(),
+            FILTERS_GET_MOVIES.filters,
+            FILTERS_GET_MOVIES.type
+        ).then((movies) => {
             const { Search = [] } = movies;
             setMovies(Search);
             setMoviesStorage({ movies: Search });

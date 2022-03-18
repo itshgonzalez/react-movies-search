@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 
-import { getMovie } from 'services/getMovie';
+import { FILTERS_GET_MOVIE } from 'constants';
+
+import { getMovies } from 'services';
 
 function useMovie(movieId) {
     const [movie, setMovie] = useState('');
 
     useEffect(() => {
-        getMovie(movieId).then((movie) => {
+        getMovies(movieId, FILTERS_GET_MOVIE.filters).then((movie) => {
             setMovie(movie);
         });
         scroll.scrollToTop({
