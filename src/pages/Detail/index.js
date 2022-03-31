@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import { Loading } from 'components/Loading';
 import { ButtonBack } from 'components/ButtonBack';
+import { MovieDetail } from 'components/MovieDetail';
 import { MoviesList } from 'components/MoviesList';
-import { Rating } from 'components/Rating';
 
 import MoviesContext from 'context/MoviesContext';
 import { useStorage } from 'hooks/useStorage';
@@ -25,127 +25,6 @@ const MovieDetailsContent = styled.div`
     margin: 0 auto;
     padding: 3rem 0;
     max-width: 80%;
-`;
-
-const MovieInfo = styled.div`
-    display: flex;
-    padding: 1rem 0;
-    max-width: 120rem;
-
-    @media (max-width: 60.75rem) {
-        flex-direction: column;
-        flex: 1 1 100%;
-        width: 100%;
-        align-items: center;
-    }
-`;
-
-const MoviePoster = styled.div`
-    padding: 1rem;
-`;
-
-const MovieImg = styled.img`
-    width: 23rem;
-    border-radius: 0.9rem;
-    box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.3);
-
-    @media (max-width: 60.75rem) {
-        width: 19rem;
-    }
-`;
-
-const MovieRating = styled.div`
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
-    text-align: center;
-    padding-bottom: 1rem;
-`;
-
-const MovieVotes = styled.span`
-    padding-left: 0.4rem;
-`;
-
-const MovieDetails = styled.div`
-    flex: 1 1 60%;
-    max-width: 40rem;
-    padding: 0 2rem;
-    align-items: center;
-
-    @media (max-width: 60.75rem) {
-        padding: 0;
-    }
-`;
-
-const MovieTitle = styled.h1`
-    padding-bottom: 1rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-`;
-
-const MoviePlot = styled.p`
-    padding-bottom: 1rem;
-
-    @media (max-width: 60.75rem) {
-        text-align: justify;
-    }
-`;
-
-const MovieInfoWrapper = styled.div`
-    padding-bottom: 1rem;
-`;
-
-const SectionTitle = styled.div`
-    display: flex;
-    align-items: center;
-    padding-bottom: 1rem;
-    font-size: 2rem;
-`;
-
-const MovieTitleSection = styled.h2`
-    padding-left: 0.6rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-`;
-
-const MovieInfoContentWrapper = styled.ul`
-    display: flex;
-    list-style: none;
-`;
-
-const MovieInfoContentLeft = styled.div`
-    flex: 1 1 30%;
-    width: 30%;
-    padding-right: 1rem;
-`;
-
-const MovieInfoContentRight = styled.div`
-    flex: 1 1 80%;
-    width: 80%;
-`;
-
-const ContentInfo = styled.div`
-    flex: 1 1 auto;
-    width: 100%;
-`;
-
-const MovieCastWrapper = styled.div`
-    padding-bottom: 1rem;
-`;
-
-const MovieRatingsWrapper = styled.div`
-    padding-bottom: 1rem;
-`;
-
-const MovieRatingsContentLeft = styled.div`
-    flex: 1 1 80%;
-    width: 80%;
-`;
-
-const MovieRatingsContentRight = styled.div`
-    flex: 1 1 30%;
-    width: 30%;
-    padding-left: 1rem;
 `;
 
 const MovieDetailsRecommended = styled.div`
@@ -174,20 +53,7 @@ function Detail({ params }) {
     const movies =
         moviesContext.length < 1 ? moviesStorage.movies : moviesContext;
 
-    const {
-        Actors,
-        Director,
-        Genre,
-        imdbID: currentMovie,
-        imdbRating,
-        Plot,
-        Poster,
-        Production,
-        Ratings,
-        Released,
-        Runtime,
-        Title,
-    } = movie;
+    const { imdbID: currentMovie } = movie;
 
     const recommendedMovies = movies.filter(
         ({ imdbID }) => imdbID !== currentMovie
@@ -199,74 +65,7 @@ function Detail({ params }) {
         <MovieDetailsWrapper>
             <MovieDetailsContent>
                 <ButtonBack />
-                <MovieInfo>
-                    <MoviePoster>
-                        <MovieImg src={Poster} />
-                        <MovieRating>
-                            <Rating imdbRating={imdbRating} />
-                            <MovieVotes>{imdbRating} / 10</MovieVotes>
-                        </MovieRating>
-                    </MoviePoster>
-                    <MovieDetails>
-                        <MovieTitle>{Title}</MovieTitle>
-                        <MoviePlot>{Plot}</MoviePlot>
-                        <MovieInfoWrapper>
-                            <SectionTitle>
-                                <span role="img" aria-label="movieinfo">
-                                    🍿
-                                </span>
-                                <MovieTitleSection>Info</MovieTitleSection>
-                            </SectionTitle>
-                            <MovieInfoContentWrapper>
-                                <MovieInfoContentLeft>
-                                    <ContentInfo>Genre:</ContentInfo>
-                                    <ContentInfo>Director:</ContentInfo>
-                                    <ContentInfo>Released:</ContentInfo>
-                                    <ContentInfo>Runtime:</ContentInfo>
-                                    <ContentInfo>Production:</ContentInfo>
-                                </MovieInfoContentLeft>
-                                <MovieInfoContentRight>
-                                    <ContentInfo>{Genre}</ContentInfo>
-                                    <ContentInfo>{Director}</ContentInfo>
-                                    <ContentInfo>{Released}</ContentInfo>
-                                    <ContentInfo>{Runtime}</ContentInfo>
-                                    <ContentInfo>{Production}</ContentInfo>
-                                </MovieInfoContentRight>
-                            </MovieInfoContentWrapper>
-                        </MovieInfoWrapper>
-                        <MovieCastWrapper>
-                            <SectionTitle>
-                                <span role="img" aria-label="cast">
-                                    🎬
-                                </span>
-                                <MovieTitleSection>Cast</MovieTitleSection>
-                            </SectionTitle>
-                            <ContentInfo>{Actors}</ContentInfo>
-                        </MovieCastWrapper>
-                        {movie && Ratings && Ratings.length > 0 && (
-                            <MovieRatingsWrapper>
-                                <SectionTitle>
-                                    <span role="img" aria-label="ratings">
-                                        ⭐️
-                                    </span>
-                                    <MovieTitleSection>
-                                        Ratings
-                                    </MovieTitleSection>
-                                </SectionTitle>
-                                {Ratings.map(({ Source, Value }) => (
-                                    <MovieInfoContentWrapper key={Source}>
-                                        <MovieRatingsContentLeft>
-                                            {Source}:
-                                        </MovieRatingsContentLeft>
-                                        <MovieRatingsContentRight>
-                                            {Value}
-                                        </MovieRatingsContentRight>
-                                    </MovieInfoContentWrapper>
-                                ))}
-                            </MovieRatingsWrapper>
-                        )}
-                    </MovieDetails>
-                </MovieInfo>
+                <MovieDetail movie={movie} />
                 {recommendedMovies && recommendedMovies.length > 0 && (
                     <MovieDetailsRecommended>
                         <RecommendedTitleSection>
