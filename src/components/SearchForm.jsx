@@ -44,11 +44,13 @@ const SearchIcon = styled(Search)`
 
 function SearchForm() {
     const { inputMovie, handleChange } = useForm();
-    const { setMovies, setSearched } = useContext(MoviesContext);
+    const { setMovies, setSearched, setSearching } = useContext(MoviesContext);
     const [, setMoviesStorage] = useStorage('s_movies', []);
 
     function handleSubmit(event) {
         event.preventDefault();
+        setSearched(false);
+        setSearching(true);
         getMovies(
             inputMovie.trim(),
             FILTERS_GET_MOVIES.filters,
@@ -58,6 +60,7 @@ function SearchForm() {
             setMovies(Search);
             setMoviesStorage({ movies: Search });
             setSearched(true);
+            setSearching(false);
         });
     }
 

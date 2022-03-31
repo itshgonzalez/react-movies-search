@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
+import { Loading } from 'components/Loading';
 import { ButtonBack } from 'components/ButtonBack';
 import { MoviesList } from 'components/MoviesList';
 import { Rating } from 'components/Rating';
@@ -162,12 +163,16 @@ const MovieDetailsContentMoviesContent = styled.div`
 
 function Detail({ params }) {
     const { movieId } = params;
-    const moviesContext = useContext(MoviesContext);
+    const {
+        movies: moviesContext,
+        searching,
+        searched,
+    } = useContext(MoviesContext);
     const moviesStorage = useStorage('s_movies')[0];
     const { movie } = useMovie(movieId);
 
-    const { movies } =
-        moviesContext.movies.length < 1 ? moviesStorage : moviesContext;
+    const movies =
+        moviesContext.length < 1 ? moviesStorage.movies : moviesContext;
 
     const {
         Actors,
@@ -188,7 +193,9 @@ function Detail({ params }) {
         ({ imdbID }) => imdbID !== currentMovie
     );
 
-    return (
+    return searching && !searched ? (
+        <Loading />
+    ) : (
         <MovieDetailsWrapper>
             <MovieDetailsContent>
                 <ButtonBack />

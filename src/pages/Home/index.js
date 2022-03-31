@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import MoviesContext from 'context/MoviesContext';
 
+import { Loading } from 'components/Loading';
 import SearchForm from 'components/SearchForm';
 import { MoviesList } from 'components/MoviesList';
 
@@ -12,14 +13,18 @@ const MoviesListWrapper = styled.div`
 `;
 
 function Home() {
-    const { movies } = useContext(MoviesContext);
+    const { movies, searching, searched } = useContext(MoviesContext);
 
     return (
         <React.Fragment>
             <SearchForm />
-            <MoviesListWrapper>
-                <MoviesList movies={movies} />
-            </MoviesListWrapper>
+            {searching && !searched ? (
+                <Loading />
+            ) : (
+                <MoviesListWrapper>
+                    <MoviesList movies={movies} />
+                </MoviesListWrapper>
+            )}
         </React.Fragment>
     );
 }
