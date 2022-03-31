@@ -14,8 +14,13 @@ const MoviesWrapper = styled.div`
     align-items: center;
     grid-gap: 4rem 2rem;
 
-    @media (max-width: 92.5rem) {
-        grid-template-columns: repeat(auto-fit, minmax(8rem, 18rem));
+    @media (max-width: 70rem) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 10rem));
+    }
+
+    @media (max-width: 71.875) {
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 12rem));
     }
 `;
 

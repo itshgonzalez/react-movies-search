@@ -17,7 +17,7 @@ const TitleHead = styled.h1`
 `;
 
 const ButtonBck = styled.button`
-    padding: 1rem;
+    margin: 1rem 0;
     background: transparent;
     border: none;
     cursor: pointer;
