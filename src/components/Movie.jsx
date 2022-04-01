@@ -19,10 +19,6 @@ const MovieImg = styled.img`
     &:hover {
         transform: scale(1.1);
     }
-    @media (max-width: 92.5rem) {
-        width: 12rem;
-        height: 18rem;
-    }
 `;
 
 export const Movie = ({ imdbID, Poster }) => (
