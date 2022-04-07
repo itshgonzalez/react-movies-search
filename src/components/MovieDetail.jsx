@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
+import { MoviesList } from 'components/MoviesList';
 import { Rating } from 'components/Rating';
 
 const MovieInfo = styled.div`
@@ -126,7 +127,20 @@ const MovieRatingsContentRight = styled.div`
     padding-left: 1rem;
 `;
 
-function MovieDetail({ movie }) {
+const MovieDetailsRecommended = styled.div`
+    flex: 1 1 100%;
+    width: 100%;
+`;
+
+const RecommendedTitleSection = styled.h1`
+    font-weight: 700;
+`;
+
+const MovieDetailsContentMoviesContent = styled.div`
+    padding: 1rem 0;
+`;
+
+function MovieDetail({ movie, recommendedMovies }) {
     const {
         Actors,
         Director,
@@ -142,77 +156,90 @@ function MovieDetail({ movie }) {
     } = movie;
 
     return (
-        <MovieInfo>
-            <MoviePoster>
-                <MovieImg src={Poster} />
-                <MovieRating>
-                    <Rating imdbRating={imdbRating} />
-                    <MovieVotes>{imdbRating} / 10</MovieVotes>
-                </MovieRating>
-            </MoviePoster>
-            <MovieDetails>
-                <MovieTitle>{Title}</MovieTitle>
-                <MoviePlot>{Plot}</MoviePlot>
-                <MovieInfoWrapper>
-                    <SectionTitle>
-                        <span role="img" aria-label="movieinfo">
-                            🍿
-                        </span>
-                        <MovieTitleSection>Info</MovieTitleSection>
-                    </SectionTitle>
-                    <MovieInfoContentWrapper>
-                        <MovieInfoContentLeft>
-                            <ContentInfo>Genre:</ContentInfo>
-                            <ContentInfo>Director:</ContentInfo>
-                            <ContentInfo>Released:</ContentInfo>
-                            <ContentInfo>Runtime:</ContentInfo>
-                            <ContentInfo>Production:</ContentInfo>
-                        </MovieInfoContentLeft>
-                        <MovieInfoContentRight>
-                            <ContentInfo>{Genre}</ContentInfo>
-                            <ContentInfo>{Director}</ContentInfo>
-                            <ContentInfo>{Released}</ContentInfo>
-                            <ContentInfo>{Runtime}</ContentInfo>
-                            <ContentInfo>{Production}</ContentInfo>
-                        </MovieInfoContentRight>
-                    </MovieInfoContentWrapper>
-                </MovieInfoWrapper>
-                <MovieCastWrapper>
-                    <SectionTitle>
-                        <span role="img" aria-label="cast">
-                            🎬
-                        </span>
-                        <MovieTitleSection>Cast</MovieTitleSection>
-                    </SectionTitle>
-                    <ContentInfo>{Actors}</ContentInfo>
-                </MovieCastWrapper>
-                {movie && Ratings && Ratings.length > 0 && (
-                    <MovieRatingsWrapper>
+        <>
+            <MovieInfo>
+                <MoviePoster>
+                    <MovieImg src={Poster} />
+                    <MovieRating>
+                        <Rating imdbRating={imdbRating} />
+                        <MovieVotes>{imdbRating} / 10</MovieVotes>
+                    </MovieRating>
+                </MoviePoster>
+                <MovieDetails>
+                    <MovieTitle>{Title}</MovieTitle>
+                    <MoviePlot>{Plot}</MoviePlot>
+                    <MovieInfoWrapper>
                         <SectionTitle>
-                            <span role="img" aria-label="ratings">
-                                ⭐️
+                            <span role="img" aria-label="movieinfo">
+                                🍿
                             </span>
-                            <MovieTitleSection>Ratings</MovieTitleSection>
+                            <MovieTitleSection>Info</MovieTitleSection>
                         </SectionTitle>
-                        {Ratings.map(({ Source, Value }) => (
-                            <MovieInfoContentWrapper key={Source}>
-                                <MovieRatingsContentLeft>
-                                    {Source}:
-                                </MovieRatingsContentLeft>
-                                <MovieRatingsContentRight>
-                                    {Value}
-                                </MovieRatingsContentRight>
-                            </MovieInfoContentWrapper>
-                        ))}
-                    </MovieRatingsWrapper>
-                )}
-            </MovieDetails>
-        </MovieInfo>
+                        <MovieInfoContentWrapper>
+                            <MovieInfoContentLeft>
+                                <ContentInfo>Genre:</ContentInfo>
+                                <ContentInfo>Director:</ContentInfo>
+                                <ContentInfo>Released:</ContentInfo>
+                                <ContentInfo>Runtime:</ContentInfo>
+                                <ContentInfo>Production:</ContentInfo>
+                            </MovieInfoContentLeft>
+                            <MovieInfoContentRight>
+                                <ContentInfo>{Genre}</ContentInfo>
+                                <ContentInfo>{Director}</ContentInfo>
+                                <ContentInfo>{Released}</ContentInfo>
+                                <ContentInfo>{Runtime}</ContentInfo>
+                                <ContentInfo>{Production}</ContentInfo>
+                            </MovieInfoContentRight>
+                        </MovieInfoContentWrapper>
+                    </MovieInfoWrapper>
+                    <MovieCastWrapper>
+                        <SectionTitle>
+                            <span role="img" aria-label="cast">
+                                🎬
+                            </span>
+                            <MovieTitleSection>Cast</MovieTitleSection>
+                        </SectionTitle>
+                        <ContentInfo>{Actors}</ContentInfo>
+                    </MovieCastWrapper>
+                    {movie && Ratings && Ratings.length > 0 && (
+                        <MovieRatingsWrapper>
+                            <SectionTitle>
+                                <span role="img" aria-label="ratings">
+                                    ⭐️
+                                </span>
+                                <MovieTitleSection>Ratings</MovieTitleSection>
+                            </SectionTitle>
+                            {Ratings.map(({ Source, Value }) => (
+                                <MovieInfoContentWrapper key={Source}>
+                                    <MovieRatingsContentLeft>
+                                        {Source}:
+                                    </MovieRatingsContentLeft>
+                                    <MovieRatingsContentRight>
+                                        {Value}
+                                    </MovieRatingsContentRight>
+                                </MovieInfoContentWrapper>
+                            ))}
+                        </MovieRatingsWrapper>
+                    )}
+                </MovieDetails>
+            </MovieInfo>
+            {recommendedMovies && recommendedMovies.length > 0 && (
+                <MovieDetailsRecommended>
+                    <RecommendedTitleSection>
+                        Recommended
+                    </RecommendedTitleSection>
+                    <MovieDetailsContentMoviesContent>
+                        <MoviesList movies={recommendedMovies} />
+                    </MovieDetailsContentMoviesContent>
+                </MovieDetailsRecommended>
+            )}
+        </>
     );
 }
 
 MovieDetail.propTypes = {
     movie: PropTypes.object.isRequired,
+    recommendedMovies: PropTypes.array,
 };
 
 export { MovieDetail };

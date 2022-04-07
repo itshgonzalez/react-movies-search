@@ -8,7 +8,7 @@ import { FILTERS_GET_MOVIE } from 'constants';
 import { getMovies } from 'services';
 
 function useMovie(movieId) {
-    const [movie, setMovie] = useState('');
+    const [movie, setMovie] = useState({});
     const { setSearching, setSearched } = useContext(MoviesContext);
 
     useEffect(() => {

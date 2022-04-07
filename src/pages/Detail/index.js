@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { Loading } from 'components/Loading';
 import { ButtonBack } from 'components/ButtonBack';
 import { MovieDetail } from 'components/MovieDetail';
-import { MoviesList } from 'components/MoviesList';
 
 import MoviesContext from 'context/MoviesContext';
 import { useStorage } from 'hooks/useStorage';
@@ -27,26 +26,9 @@ const MovieDetailsContent = styled.div`
     max-width: 80%;
 `;
 
-const MovieDetailsRecommended = styled.div`
-    flex: 1 1 100%;
-    width: 100%;
-`;
-
-const RecommendedTitleSection = styled.h1`
-    font-weight: 700;
-`;
-
-const MovieDetailsContentMoviesContent = styled.div`
-    padding: 1rem 0;
-`;
-
 function Detail({ params }) {
     const { movieId } = params;
-    const {
-        movies: moviesContext,
-        searching,
-        searched,
-    } = useContext(MoviesContext);
+    const { movies: moviesContext, searched } = useContext(MoviesContext);
     const moviesStorage = useStorage('s_movies')[0];
     const { movie } = useMovie(movieId);
 
@@ -59,23 +41,16 @@ function Detail({ params }) {
         ({ imdbID }) => imdbID !== currentMovie
     );
 
-    return searching && !searched ? (
+    return !searched ? (
         <Loading />
     ) : (
         <MovieDetailsWrapper>
             <MovieDetailsContent>
                 <ButtonBack />
-                <MovieDetail movie={movie} />
-                {recommendedMovies && recommendedMovies.length > 0 && (
-                    <MovieDetailsRecommended>
-                        <RecommendedTitleSection>
-                            Recommended
-                        </RecommendedTitleSection>
-                        <MovieDetailsContentMoviesContent>
-                            <MoviesList movies={recommendedMovies} />
-                        </MovieDetailsContentMoviesContent>
-                    </MovieDetailsRecommended>
-                )}
+                <MovieDetail
+                    movie={movie}
+                    recommendedMovies={recommendedMovies}
+                />
             </MovieDetailsContent>
         </MovieDetailsWrapper>
     );
